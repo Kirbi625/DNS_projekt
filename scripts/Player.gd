@@ -27,4 +27,7 @@ func _physics_process(delta: float) -> void:
 	if direction != 0:
 		$AnimatedSprite2D.flip_h = direction < 0
 	
+	# hitbox in front of player            
+		$hitbox.position.x = direction * 175  # <-- distance 
+	
 	move_and_slide()
