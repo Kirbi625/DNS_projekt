@@ -21,5 +21,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
+	
+	# character rotation
+	if direction != 0:
+		$AnimatedSprite2D.flip_h = direction < 0
+	
 	move_and_slide()
