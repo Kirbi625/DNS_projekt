@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjvcd7nc0b4c"]
+[gd_scene load_steps=6 format=3 uid="uid://bjvcd7nc0b4c"]
 
 [ext_resource type="Texture2D" uid="uid://cadmvofp3rojk" path="res://sprites/Wait he's goated.jpg" id="1_lj8jo"]
 [ext_resource type="Script" uid="uid://bgm4676faep7b" path="res://scripts/Player.gd" id="1_v6fml"]
-[ext_resource type="Texture2D" uid="uid://bjh1re0k2qj23" path="res://sprites/icon.svg" id="3_3li8b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ghijl"]
 animations = [{
@@ -34,9 +33,6 @@ shape = SubResource("RectangleShape2D_44cfe")
 
 [node name="hitbox" type="Area2D" parent="."]
 monitoring = false
-
-[node name="Sprite2D" type="Sprite2D" parent="hitbox"]
-texture = ExtResource("3_3li8b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_mdl7e")

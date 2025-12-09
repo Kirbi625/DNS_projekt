@@ -28,6 +28,13 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = direction < 0
 	
 	# hitbox in front of player            
-		$hitbox.position.x = direction * 175  # <-- distance 
-	
+		$hitbox.position.x = direction * 175  # <-- diddstance 
+		
+	if Input.is_action_just_pressed("attack"):
+		$hitbox.monitoring = true
+		$hitbox.visible = true
+		await get_tree().create_timer(0.2).timeout
+		$hitbox.monitoring = false
+		$hitbox.visible = false
+		
 	move_and_slide()
