@@ -1,8 +1,34 @@
 extends CharacterBody2D
 
+var can_attack = true
+var counter = 0
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -400.0
+
+func attack():
+	
+	if not can_attack:
+		return
+		
+	can_attack = false
+	
+	#on/off hitbox
+	$hitbox.set_deferred("monitoring", true)
+	$hitbox.visible = true
+	await get_tree().create_timer(0.2).timeout
+	$hitbox.set_deferred("monitoring", false)
+	$hitbox.visible = false
+	
+	# combo of 3
+	counter+=1
+	if counter == 3:
+		await get_tree().create_timer(1).timeout	
+		counter = 0
+
+	can_attack = true
+	print("amogus")
+
 
 
 func _physics_process(delta: float) -> void:
@@ -30,11 +56,9 @@ func _physics_process(delta: float) -> void:
 	# hitbox in front of player            
 		$hitbox.position.x = direction * 175  # <-- diddstance 
 		
-	if Input.is_action_just_pressed("attack"):
-		$hitbox.monitoring = true
-		$hitbox.visible = true
-		await get_tree().create_timer(0.2).timeout
-		$hitbox.monitoring = false
-		$hitbox.visible = false
+	if Input.is_action_just_pressed("attack"):	
+		attack()
 		
+	
 	move_and_slide()
+	
