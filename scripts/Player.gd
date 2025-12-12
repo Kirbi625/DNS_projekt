@@ -28,9 +28,6 @@ func attack():
 
 	can_attack = true
 	print("amogus")
-func _process(delta: float) -> void:
-	Global.test = Vector2($".".position.x,$".".position.y)
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
