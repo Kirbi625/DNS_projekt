@@ -6,8 +6,25 @@ var counter = 0
 const SPEED = 500.0
 const JUMP_VELOCITY = -400.0
 
+func _ready() -> void:
+	$hitbox.set_deferred("monitoring", false)
+	$hitbox.visible = false
+
+
+func reset_timer():     #reset combo after 2s idle 
+	var id = counter
+	print("test poczatek", id)
+	await get_tree().create_timer(3).timeout
+	if id == counter:
+		print("test same id", id, counter)
+		counter = 0
+	else:
+		print("test diff id", id, counter)
+
+
+
 func attack():
-	
+
 	if not can_attack:
 		return
 		
@@ -22,6 +39,7 @@ func attack():
 	
 	# combo of 3
 	counter+=1
+	reset_timer()
 	if counter == 3:
 		await get_tree().create_timer(1).timeout	
 		counter = 0
